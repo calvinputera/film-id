@@ -11,6 +11,8 @@ module.exports = {
 			primaryRed: "#DA3517",
 			secondaryRed: "#FB5B58",
 			primaryYellow: "#FFED4E",
+			gold: "#C69877",
+			desc: "#BABABA",
 		},
 		extend: {},
 	},
