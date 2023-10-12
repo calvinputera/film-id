@@ -1,7 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
-import Section from "../components/Section";
 import Navbar from "../components/Navbar";
+import TrendingSection from "../components/TrendingSection";
+import NewReleaseSection from "../components/NewReleaseSection";
 
 const Home = () => {
 	return (
@@ -10,11 +11,11 @@ const Home = () => {
 			<div className="px-5">
 				<div className="-mb-7">
 					<h2 className="text-white my-3 font-semibold">Trending Now</h2>
-					<Section />
+					<TrendingSection />
 				</div>
 				<div className="mb-24">
 					<h2 className="text-white my-3 font-semibold">New Release</h2>
-					<Section />
+					<NewReleaseSection />
 				</div>
 			</div>
 			<Navbar />

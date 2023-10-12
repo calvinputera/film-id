@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { getMovieTrending } from "../api";
+import { getNewReleaseMovies } from "../api";
 import Card from "./Card";
 
-const Section = () => {
-	const [trendingMovies, setTrendingMovies] = useState([]);
+const NewReleaseSection = () => {
+	const [newMovies, setNewMovies] = useState([]);
 
 	useEffect(() => {
-		// setTrendingMovies(getMovieTrending());
-		getMovieTrending().then((result) => setTrendingMovies(result));
+		getNewReleaseMovies().then((result) => setNewMovies(result));
 	}, []);
-
-	console.log(trendingMovies);
 
 	return (
 		<>
 			<div className="flex flex-col">
 				<div className="w-full flex gap-7 overflow-x-scroll pb-10 no-scrollbar">
-					{trendingMovies.map((item, i) => (
+					{newMovies.map((item, i) => (
 						<Card
 							key={i}
-							image={item.backdrop_path}
+							image={item.poster_path}
 							title={item.title}
 							rate={item.vote_average}
 							date={item.release_date}
@@ -31,4 +28,4 @@ const Section = () => {
 	);
 };
 
-export default Section;
+export default NewReleaseSection;

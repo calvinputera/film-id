@@ -1,38 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BannerMovie from "../components/BannerMovie";
 import Button from "../components/Button";
 import CardReviews from "../components/CardReviews";
+import { getDetailMovie, getReviews } from "../api";
+import { useParams } from "react-router-dom";
 
 const DetailMovie = () => {
+	const [detailMovie, setDetailMovie] = useState({});
+	const [movieReviews, setMovieReviews] = useState([]);
+
+	const params = useParams();
+
+	useEffect(() => {
+		getDetailMovie(params.id).then((result) => setDetailMovie(result));
+	}, []);
+
+	useEffect(() => {
+		getReviews(params.id).then((result) => setMovieReviews(result));
+	}, []);
+
 	return (
 		<>
-			<BannerMovie />
+			<BannerMovie imageBackdrop={detailMovie.backdrop_path} />
 			<div className="px-4">
 				<div className="flex justify-between my-5">
 					<div className="text-white">
-						<h2 className="font-semibold text-lg">Heart of Stone</h2>
-						<p>2022</p>
+						<h2 className="font-semibold text-lg">{detailMovie.title}</h2>
+						<p>{detailMovie.release_date}</p>
 					</div>
 					<Button title="Play Now" />
 				</div>
-				<p className="text-desc text-justify">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, minima
-					facilis fuga error tempora natus, iste ea perspiciatis vel quisquam
-					eius, voluptates et sunt. Quisquam aperiam facilis illum nostrum
-					dignissimos atque repellat fuga voluptate laboriosam similique
-					corporis, nulla sit. Dolorum odio, nesciunt consequuntur in vel
-					delectus totam culpa et? Rerum expedita inventore, doloribus earum,
-					fugiat iste libero corporis modi dolore, enim voluptatum cumque labore
-					tempora nam laudantium. Repellat earum voluptatum, itaque sed quos vel
-					temporibus minima ea ratione! Placeat voluptatem dolore eius, nemo eos
-					soluta? Nisi, esse quia nemo dolores ab totam minus, voluptatibus
-					ratione quam dicta quae perferendis est.
-				</p>
+				<p className="text-desc text-justify">{detailMovie.overview}</p>
 				<h2 className="font-semibold text-lg text-white my-5">Reviews</h2>
 				<div className="flex flex-wrap gap-4">
-					<CardReviews />
-					<CardReviews />
-					<CardReviews />
+					{movieReviews === [] ? (
+						<div className="h-28 bg-secondaryRed text-white font-bold">
+							KOSONG
+						</div>
+					) : (
+						movieReviews.map((item, i) => (
+							<CardReviews
+								key={i}
+								author={item.author}
+								avatar={item.author_details.avatar_path}
+								content={item.content}
+							/>
+						))
+					)}
 				</div>
 			</div>
 		</>

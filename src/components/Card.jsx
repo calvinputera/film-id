@@ -1,13 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Card = ({ image, title, rate, date }) => {
+const Card = ({ id, image, title, rate, date }) => {
 	const gambar = process.env.REACT_APP_IMGURL;
 
 	const dateRelease = new Date(date);
 	const release = dateRelease.getFullYear();
 
+	const navigate = useNavigate();
+
 	return (
-		<div>
+		<div onClick={() => navigate(`/detail/${id}`)} className="cursor-pointer">
 			<div
 				style={{
 					backgroundImage: `url(${gambar + image})`,
