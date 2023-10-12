@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ id, image, title, rate, date }) => {
-	const gambar = process.env.REACT_APP_IMGURL;
+	const picture = process.env.REACT_APP_IMGURL;
 
 	const dateRelease = new Date(date);
 	const release = dateRelease.getFullYear();
@@ -13,7 +13,7 @@ const Card = ({ id, image, title, rate, date }) => {
 		<div onClick={() => navigate(`/detail/${id}`)} className="cursor-pointer">
 			<div
 				style={{
-					backgroundImage: `url(${gambar + image})`,
+					backgroundImage: `url(${picture + image})`,
 				}}
 				className="bg-cover bg-center h-56 w-40 rounded-2xl relative"
 			>

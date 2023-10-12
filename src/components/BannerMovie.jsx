@@ -15,12 +15,12 @@ const BannerMovie = ({ imageBackdrop }) => {
 		>
 			<div className="mt-8 flex w-full justify-between">
 				<div
-					className="bg-gold rounded-full w-10 h-10 flex justify-center items-center p-2 cursor-pointer"
+					className="bg-gold rounded-full w-10 h-10 flex justify-center items-center p-2 cursor-pointer md:hidden"
 					onClick={() => navigate(-1)}
 				>
 					<BsChevronLeft size={25} color="#ffffff" />
 				</div>
-				<div className="bg-gold rounded-full w-10 h-10 flex justify-center items-center p-2">
+				<div className="bg-gold rounded-full w-10 h-10 flex justify-center items-center p-2 md:hidden">
 					<BsBookmark size={25} color="#ffffff" />
 				</div>
 			</div>

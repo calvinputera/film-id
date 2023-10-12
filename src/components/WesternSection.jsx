@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { getNewReleaseMovies } from "../api";
 import Card from "./Card";
+import { getWesternMovies } from "../api";
 
-const NewReleaseSection = () => {
-	const [newMovies, setNewMovies] = useState([]);
+const WesternSection = () => {
+	const [westernMovies, setWeternMovies] = useState([]);
 
 	useEffect(() => {
-		// setNewMovies(getNewReleaseMovies);
-		getNewReleaseMovies().then((result) => setNewMovies(result));
+		getWesternMovies().then((result) => setWeternMovies(result));
 	}, []);
-
-	console.log("HALLO", newMovies);
 
 	return (
 		<>
 			<div className="flex flex-col">
 				<div className="w-full flex gap-7 overflow-x-scroll pb-10 no-scrollbar">
-					{newMovies.map((item, i) => (
+					{westernMovies.map((item, i) => (
 						<Card
 							key={i}
 							id={item.id}
@@ -32,4 +29,4 @@ const NewReleaseSection = () => {
 	);
 };
 
-export default NewReleaseSection;
+export default WesternSection;

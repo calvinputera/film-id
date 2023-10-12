@@ -18,6 +18,13 @@ export const getNewReleaseMovies = async () => {
 	return newReleaseMovie.data.results;
 };
 
+export const getWesternMovies = async () => {
+	const westernMovie = await axios.get(
+		`${baseUrl}/movie/upcoming?api_key=${apiKey}`
+	);
+	return westernMovie.data.results;
+};
+
 export const getDetailMovie = async (id) => {
 	const movieDetail = await axios.get(
 		`${baseUrl}/movie/${id}?api_key=${apiKey}`
@@ -32,4 +39,12 @@ export const getReviews = async (id) => {
 	);
 	// console.log("HELLO", movieReviews);
 	return movieReviews.data.results;
+};
+
+export const searchMovie = async (e) => {
+	const search = await axios.get(
+		`${baseUrl}/search/movie?query=${e}&api_key=${apiKey}`
+	);
+
+	return search.data;
 };
